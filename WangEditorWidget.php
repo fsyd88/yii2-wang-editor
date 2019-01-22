@@ -37,18 +37,21 @@ class WangEditorWidget extends InputWidget {
         $view = $this->getView();
         WangEditorAsset::register($view);
 
+
+        $this->customConfig = $this->customConfig? : [];
+
         $id = $this->_editorId;
         $name = 'weditor' . $this->id;
         $hiddenInputId = $this->options['id'];
-        $config = array_merge(['uploadImgServer' => 'upload', $this->customConfig]);
+        $config = array_merge(['uploadImgServer' => 'upload'], $this->customConfig);
         $customOptions = $name . '.customConfig=' . Json::htmlEncode($config);
-
+        
         $js = <<<JS
-            var {$name} = new window.wangEditor('#{$id}');
+            var {$name} = new window.wangEditor('#{$id}');            
+            {$customOptions}            
             {$name}.customConfig.onchange = function (html) {
                 $('#{$hiddenInputId}').val(html);
             }
-            {$customOptions}
             {$name}.create();
 JS;
         $view->registerJs($js);
