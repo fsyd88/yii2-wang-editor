@@ -1,0 +1,21 @@
+{
+    "name": "fsyd88/yii2-wang-editor",
+    "description": "extension of wangEditor for yii2",
+    "type": "yii2-extension",
+    "keywords": [
+        "yii2",
+        "extension",
+        "wangEditor",
+        "editor"
+    ],
+    "license": "MIT",
+    "require": {
+        "yiisoft/yii2": ">=2.0.6",
+        "npm-asset/wangeditor": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "fsyd88\\wangEditor\\": ""
+        }
+    }
+}
